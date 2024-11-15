@@ -114,19 +114,24 @@ semaphore = asyncio.Semaphore(1000)
 async def scan_port(target, port, timeout):
     async with semaphore:
         try:
+            # Attempts to open an asynchronous TCP connection to the target port
             reader, writer = await asyncio.wait_for(asyncio.open_connection(target, port), timeout=timeout)
-
-            # Check for a service detection plugin
+            # Refers to service_plugins.py and stores as a constant
             plugin_func = service_plugins.get(port)
+            # Checks for unique services from plugin
             if plugin_func:
-                # Use the plugin to detect the service
+                # Stores banners from unique services if open
                 banner = await plugin_func(reader, writer)
+            # Task for non-unique ports/banners
             else:
-                # Default banner grabbing
                 try:
+                    # Sends a generic newline to the port to potentially prompt a response
                     writer.write(b"\r\n")
+                    # Ensures data is sent to the target port
                     await writer.drain()
+                    # Reads up to 4096 bytes from target port before timeout
                     data = await asyncio.wait_for(reader.read(4096), timeout=1)
+                    # Parses transmitted data into string value
                     banner = data.decode('utf-8', errors='ignore').strip()
                     if banner:
                         banner = clean_banner(banner)
@@ -135,9 +140,14 @@ async def scan_port(target, port, timeout):
                 except Exception:
                     banner = 'No banner'
 
+            # Closes the connection once reading is complete
             writer.close()
             await writer.wait_closed()
+
+            # Cleans and formats the banner whenever able
             service_name = get_service_name(port)
+
+            # Checks if banner is longer than 80 characters
             if len(banner) > 80:
                 banner = banner[:80] + '...'
             return {
@@ -147,8 +157,10 @@ async def scan_port(target, port, timeout):
                 'Banner': banner
             }
         except Exception as e:
+            # Stores common errors like timeouts and connection refusals as verbose data
             if args.verbose:
                 print(f"Exception when connecting to port {port}: {type(e).__name__}: {e}")
+                # Stack traceback for exceptions
                 traceback.print_exc()
             return None
 
