@@ -2,8 +2,8 @@
 # ----------------------------------------------------------------------#
 # FILE PROPERTIES AND AUTHOR INFO                                       #
 #   fileName            basic_port_scanner                              #
-#   fileType            Plain Text Document (.txt)                      #
-#   language            Python 3 (11.9)                                 #
+#   fileType            Python 3 Script (.py)                           #
+#   language            Python (v3.12)                                  #
 #   author              Jeret E. Obermeyer                              #
 #   courseNum           IS-4543-002                                     #
 #                                                                       #
@@ -12,9 +12,9 @@
 #   projDesc            Port-scanning tool that analyzes a target ma-   #
 #                       -chine for open TCP ports and attempts to id-   #
 #                       -entify services running associated with them   #
-#   msNum               Milestone 03                                    #
-#   msWorkStart         10/25/2024                                      #
-#   msWorkEnd           11/07/2024                                      #
+#   msNum               Milestone 04                                    #
+#   msWorkStart         11/07/2024                                      #
+#   msWorkEnd           11/15/2024                                      #
 #                                                                       #
 #                 Copyright (c) 2024, UT at San Antonio                 #
 # ----------------------------------------------------------------------#
