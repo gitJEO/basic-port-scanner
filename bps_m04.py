@@ -39,13 +39,13 @@ from service_plugins import service_plugins, register_plugin                    
 
 # CONSTANTS
 parser = argparse.ArgumentParser(description="Asynchronous Multi-Target Port Scanner")                                                              # The description of the custom argument/command line
-parser.add_argument("target", help="Target IP address, hostname, or CIDR range to scan")                                                            # param1   Sets the target IP address to scan and explains functionality when help() is called
-parser.add_argument("--start_port", type = int, default = 1, help = "Start of port range to scan")                                                  # param2   Sets the starting port range to scan based on IP address in param1 
-parser.add_argument("--end_port", type = int, default = 1024, help = "End of port range to scan")                                                   # param2   Sets the ending port range to scan based on IP address in param1 
-parser.add_argument("--csv_path", default = "/home/kali/Desktop/service-names-port-numbers.csv", help = "Path to the service names CSV file")       # param3   Sets the preferred directory for scanning criteria
-parser.add_argument("--timeout", type=float, default=0.5, help="Socket timeout for each port")                                                      # param4   Sets the timeout value for each port scan
-parser.add_argument("--batch_size", type=int, default=100, help="Number of concurrent connections")                                                 # param5   Sets the batch size value for the scan
-parser.add_argument("--verbose", action="store_true", help="Enable verbose output for debugging")
+parser.add_argument("target", help="Target IP address, hostname, or CIDR range to scan")                                                            # param1    Sets the target IP address to scan and explains functionality when help() is called
+parser.add_argument("--start_port", type = int, default = 1, help = "Start of port range to scan")                                                  # param2    Sets the starting port range to scan based on IP address in param1 
+parser.add_argument("--end_port", type = int, default = 1024, help = "End of port range to scan")                                                   # param2    Sets the ending port range to scan based on IP address in param1 
+parser.add_argument("--csv_path", default = "/home/kali/Desktop/service-names-port-numbers.csv", help = "Path to the service names CSV file")       # param3    Sets the preferred directory for scanning criteria
+parser.add_argument("--timeout", type=float, default=0.5, help="Socket timeout for each port")                                                      # param4    Sets the timeout value for each port scan
+parser.add_argument("--batch_size", type=int, default=100, help="Number of concurrent connections")                                                 # param5    Sets the batch size value for the scan
+parser.add_argument("--verbose", action="store_true", help="Enable verbose output for debugging")                                                   # param6    Sets the scan output to contain line-by-line information on each scan
 
 args = parser.parse_args()                                                                                                                          # Runs the parser and places the extracted data in a argparse.Namespace object (see: ArgumentParser.parse_args())
 colorama.init()                                                                                                                                     # Initialized colorama for tabular output formatting
