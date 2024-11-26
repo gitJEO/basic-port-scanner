@@ -13,8 +13,8 @@
 #                       -chine for open TCP ports and attempts to id-   #
 #                       -entify services running associated with them   #
 #   msNum               Milestone 05                                    #
-#   msWorkStart         11/26/2024                                      #
-#   msWorkEnd           11/16/2024                                      #
+#   msWorkStart         11/16/2024                                      #
+#   msWorkEnd           11/26/2024                                      #
 #                                                                       #
 #                 Copyright (c) 2024, UT at San Antonio                 #
 # ----------------------------------------------------------------------#
